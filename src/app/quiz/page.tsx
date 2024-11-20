@@ -14,9 +14,9 @@ import { toast } from "sonner";
 
 const questions: Question[] = [
   {
-    question: "What is the street name for cannabis?",
-    answers: ["Weed", "Coke", "Ket", "Candy"],
-    correctAnswer: "Weed",
+    question: "How long can cannibis show up for on a hair drug test?",
+    answers: ["1 day", "7 days", "1 year", "3 months"],
+    correctAnswer: "3 months",
   },
   {
     question: "What is the leading cause of lung cancer?",
