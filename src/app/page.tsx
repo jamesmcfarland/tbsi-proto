@@ -9,6 +9,9 @@ import Tracking from "@/components/tracking";
 import { useRouter } from "next/navigation";
 
 const localStorageGet = (key: string, defaultValue: number) => {
+  if (typeof window === "undefined") {
+    return defaultValue;
+  }
   const value = localStorage.getItem(key);
   if (value) {
     return parseInt(value);

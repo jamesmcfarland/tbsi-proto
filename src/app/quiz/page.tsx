@@ -44,6 +44,9 @@ const cleanQuestion: Question = {
 };
 
 const localStorageGet = (key: string, defaultValue: number) => {
+  if (typeof window === "undefined") {
+    return defaultValue;
+  }
   const value = localStorage.getItem(key);
   if (value) {
     return parseInt(value);
@@ -51,7 +54,7 @@ const localStorageGet = (key: string, defaultValue: number) => {
   return defaultValue;
 };
 
-const QuizPage = () => {
+const Page = () => {
   const router = useRouter();
   // Pick a random question
   const question = questions[Math.floor(Math.random() * questions.length)];
@@ -135,4 +138,4 @@ const QuizPage = () => {
   );
 };
 
-export default QuizPage;
+export default Page;

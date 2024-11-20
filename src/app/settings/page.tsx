@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export function SettingsPage() {
+export default function Page() {
   const [positiveEffects, setPositiveEffects] = useState(false);
   const [judgmentalLanguage, setJudgmentalLanguage] = useState(false);
   const [positiveOutcome, setPositiveOutcome] = useState(false);
@@ -84,5 +84,3 @@ export function SettingsPage() {
     </div>
   );
 }
-
-export default SettingsPage;
