@@ -32,9 +32,9 @@ const useQuestion: Question = {
 };
 
 const lostStreakQuestion: Question = {
-  question: "Is today the start of your next streak?",
+  question: "Day 1 - Let's go",
   answers: ["Yes!!"],
-  correctAnswer: "Yes",
+  correctAnswer: "Yes!!",
 };
 
 const cleanQuestion: Question = {
