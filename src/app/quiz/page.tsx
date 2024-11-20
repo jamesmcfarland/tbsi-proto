@@ -21,7 +21,7 @@ const questions: Question[] = [
   {
     question: "What is the leading cause of lung cancer?",
     answers: ["Cigarettes", "TV", "Hiking", "Inhalers"],
-    correctAnswer: "Cigareettes",
+    correctAnswer: "Cigarettes",
   },
 ];
 
