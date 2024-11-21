@@ -1,0 +1,13 @@
+@startuml C4 Context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+LAYOUT_WITH_LEGEND()
+LAYOUT_LANDSCAPE()
+header CSC3045-2425-TEAM21 - C4 Context Diagram for Gateway
+Person(user, "User", "A drug user", $sprite="person")
+System(platform, "'Gateway' Platform", "Helps users to understand their drug use and motivate them to quit, through quizzes and usage tracking")
+
+Rel(user, platform, "Accesses", "HTTPS")
+
+SHOW_LEGEND()
+footer drawn with PlantUML v. %version() and C4-PlantUML v. C4Version()\nQUB Group 21 2024-25 
+@enduml

@@ -1,0 +1,45 @@
+@startuml C4 Component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!$ICONURL = "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons"
+!include $ICONURL/common.puml
+!include $ICONURL/devicons2/postgresql.puml
+!include $ICONURL/devicons2/nextjs.puml
+!include $ICONURL/devicons2/typescript.puml
+
+LAYOUT_WITH_LEGEND()
+LAYOUT_TOP_DOWN()
+
+header CSC3045-2425-TEAM21 - C4 Component Diagram for Gateway
+
+  Container(frontend, "Frontend Application", "Delivers frontend UI via Server-side rendering and proxies requests to the API", $sprite="nextjs")
+ContainerDb(db, "Database", "Stores user progress, quiz data, and authentication", $sprite="postgresql")
+
+Container_Boundary(api, "API") {
+    Container_Boundary(gateway_layer, "API Gateway Layer") {
+        Component(router, "Router", "Routes requests")
+    }
+    Container_Boundary(business_layer, "Business Logic Layer") {
+        Component(user_management, "User Management Component", "Handles registration, login, and profiles")
+        Component(usage_tracking, "Usage Tracking Component", "Manages progress data")
+        Component(quizzes, "Quiz Component", "Manages quizzes and results")
+    }
+    Container_Boundary(data_layer, "Data Access Layer") {
+        Component(orm_user, "Drizzle ORM", "User Data Access")
+        Component(orm_tracking, "Drizzle ORM", "Usage Tracking Data Access")
+        Component(orm_quiz, "Drizzle ORM", "Quiz Data Access")
+    }
+    Rel_Down(router, user_management, "Routes to")
+    Rel_Down(router, usage_tracking, "Routes to")
+    Rel_Down(router, quizzes, "Routes to")
+    Rel_Down(user_management, orm_user, "Queries")
+    Rel_Down(usage_tracking, orm_tracking, "Queries")
+    Rel_Down(quizzes, orm_quiz, "Queries")
+}
+
+Rel_Down(data_layer, db, "Reads from and writes to")
+Rel(frontend, router, "Uses", "JSON/HTTPS")
+
+SHOW_LEGEND()
+
+footer drawn with PlantUML v. %version() and C4-PlantUML v. C4Version()\nQUB Group 21 2024-25 
+@enduml

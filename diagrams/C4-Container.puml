@@ -1,0 +1,25 @@
+@startuml C4 Container
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!$ICONURL = "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons"
+!include $ICONURL/common.puml
+!include $ICONURL/devicons2/postgresql.puml
+!include $ICONURL/devicons2/nextjs.puml
+!include $ICONURL/devicons2/typescript.puml
+!include $ICONURL/material/email.puml
+LAYOUT_LANDSCAPE()
+header CSC304-2425-TEAM21 - C4 Container Diagram for Gateway
+Person(user, "User", "A drug user", $sprite="person")
+System_Boundary(platform, "Gateway Platform") {
+  Container(frontend, "Frontend Application", "Delivers frontend UI via Server-side rendering and proxies requests to the API", $sprite="nextjs")
+  Container(api, "API", "Provides an interface for the database via a REST API, supporting tracking, quizzes and user information",$sprite="typescript")
+  ContainerDb(db, "Database", "Stores metadata, tracking info, quizzes and user profile data", $sprite="postgresql")
+  BiRel(api, db, "Reads from and writes to", "Drizzle ORM")
+  BiRel(frontend, api, "Uses", "JSON/HTTPS")
+}
+
+Rel(user, frontend, "Uses", "HTTPS")
+
+
+SHOW_LEGEND()
+footer drawn with PlantUML v. %version() and C4-PlantUML v. C4Version()\nQUB Group 21 2024-25 
+@enduml
